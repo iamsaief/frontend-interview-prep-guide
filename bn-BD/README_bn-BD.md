@@ -1,14 +1,14 @@
 <div align="center">
-    <img height="60" src="https://img.icons8.com/color/344/javascript.png" />
-    <img height="55" src="https://svgmix.com/uploads/e86a0a-react.svg" />
+    <img height="40" src="https://svgmix.com/uploads/d64401-javascript.svg" />
+    <img height="40" src="https://svgmix.com/uploads/e86a0a-react.svg" />
     <h1>🚀 The Ultimate Frontend Interview Prep Guide</h1>
 </div>
+
+React ও JavaScript ইন্টারভিউ প্রস্তুতির জন্য ১০০+ Q&A ও cheat sheet। Frontend developer দের জন্য শেখা, রিভিশন ও ইন্টারভিউ ক্র্যাক করার গাইড।
 
 আমি এই রিসোর্সটি তৈরি করেছি **শেখা, শেয়ার করা এবং কমিউনিটি গ্রোথ** 🌱 এর জন্য। যদি এটি আপনার কাজে লাগে, তবে একটি ⭐️ বা শেয়ার আমার জন্য অনেক বড় ব্যাপার হবে!
 
 ✨ শুভকামনা, **Happy coding!**
-
-React ও JavaScript ইন্টারভিউ প্রস্তুতির জন্য ১০০+ Q&A ও cheat sheet। Frontend developer দের জন্য শেখা, রিভিশন ও ইন্টারভিউ ক্র্যাক করার গাইড।
 
 <p align="center">
 💬 In case you want to reach out or just say hi, ↩️ <br/>
@@ -41,163 +41,479 @@ React ও JavaScript ইন্টারভিউ প্রস্তুতির 
 
 ## 🏗️ Core Concepts & Fundamentals
 
-Q1. var, let, আর const এর মধ্যে পার্থক্য কী?
-A1. var function-scoped, hoisted হয়; let/const block-scoped; const reassign করা যায় না।
+**Q1. `var`, `let`, আর `const` এর মধ্যে পার্থক্য কী?**  
+👉 `var` function-scoped আর hoisted হয়, তাই block এর বাইরে থেকেও access করা যায়। `let` আর `const` block-scoped, মানে শুধুমাত্র {} এর ভেতরে কাজ করে। তবে `const` দিয়ে declare করলে reassign করা যায় না।
 
-Q2. Hoisting কী?
-A2. Variable আর function declaration execution-এর আগে scope-এর উপরে তুলে আনা হয়।
+```js
+var a = 1;
+let b = 2;
+const c = 3;
+```
 
-Q3. == আর === এর মধ্যে পার্থক্য কী?
-A3. == type coercion করে, === strict type + value check করে।
+**Q2. Hoisting কী?**  
+👉 Hoisting মানে হলো variable আর function declaration execution-এর আগে scope-এর উপরে উঠে যায়। তাই declare করার আগেও access করা যায়, যদিও value `undefined` থাকবে।
 
-Q4. Closure কী এবং কেন দরকার?
-A4. Closure হলো function যেটা outer scope-এর variable মনে রাখে; data encapsulation আর state রাখার জন্য দরকার।
+```js
+console.log(a); // undefined
+var a = 5;
+```
 
-Q5. Scope কী?
-A5. Variable কোথায় accessible হবে সেটা নির্ধারণ করে: global, function, block।
+**Q3. `==` আর `===` এর মধ্যে পার্থক্য কী?**  
+👉 `==` type coercion করে অর্থাৎ আলাদা type হলে convert করে compare করে। `===` strict equality check করে, মানে value আর type দুটোই একই হতে হবে।
 
-Q6. Synchronous vs Asynchronous code পার্থক্য কী?
-A6. Sync line-by-line চলে; Async non-blocking হয় (callback, promise, async/await দিয়ে)।
+```js
+5 == "5"; // true
+5 === "5"; // false
+```
 
-Q7. Higher-order function কী?
-A7. Function যেটা অন্য function নেয় বা return করে।
+**Q4. Closure কী এবং কেন দরকার?**  
+👉 Closure হলো function যেটা তার outer scope-এর variable মনে রাখে, এমনকি সেই scope শেষ হলেও। এটি data encapsulation বা private variable তৈরি করতে সাহায্য করে।
 
-Q8. null vs undefined পার্থক্য কী?
-A8. undefined = declare হয়েছে কিন্তু assign হয়নি; null = ইচ্ছাকৃত empty value।
+```js
+function counter() {
+  let count = 0;
+  return () => ++count;
+}
+const c = counter();
+console.log(c()); // 1
+```
 
-Q9. Template literals কী?
-A9. Backtick string যেটা interpolation আর multiline support করে।
+**Q5. Scope কী?**  
+👉 Scope বলে দেয় কোন variable কোথায় access করা যাবে। Global scope পুরো কোডে কাজ করে, function scope শুধু function এর মধ্যে, আর block scope `{}` এর মধ্যে সীমাবদ্ধ থাকে।
 
-Q10. Primitive vs Reference type পার্থক্য কী?
-A10. Primitive immutable, value দিয়ে store হয়; Object/Array reference দিয়ে store হয়।
+```js
+let x = 1;
+function test() {
+  let y = 2;
+}
+```
+
+**Q6. Synchronous vs Asynchronous code পার্থক্য কী?**  
+👉 Synchronous code line-by-line execute হয়, তাই একটি কাজ শেষ না হলে পরেরটা শুরু হয় না। Asynchronous code non-blocking হয়, যেমন callback, promise, async/await ব্যবহার করে parallel এ কাজ করা যায়।
+
+```js
+console.log("1");
+setTimeout(() => console.log("2"), 0);
+console.log("3");
+// Output: 1,3,2
+```
+
+**Q7. Higher-order function কী?**  
+👉 Higher-order function হলো function যেটা অন্য function কে argument হিসেবে নেয় বা return করে। এগুলো functional programming-এ অনেক ব্যবহার হয়।
+
+```js
+const apply = (fn, x) => fn(x);
+apply((n) => n * 2, 5); // 10
+```
+
+**Q8. `null` vs `undefined` পার্থক্য কী?**  
+👉 `undefined` মানে variable declare হয়েছে কিন্তু কোনো value assign হয়নি। `null` মানে developer ইচ্ছাকৃতভাবে empty বা "কিছু নেই" value দিয়েছে।
+
+```js
+let a; // undefined
+let b = null; // null
+```
+
+**Q9. Template literals কী?**  
+👉 Template literals হলো backtick string, যেখানে variable interpolation (`${}`) করা যায় এবং multiline string লিখতে সুবিধা হয়।
+
+```js
+let name = "Saief";
+console.log(`Hello ${name} Welcome!`);
+```
+
+**Q10. Primitive vs Reference type পার্থক্য কী?**  
+👉 Primitive (string, number, boolean ইত্যাদি) immutable এবং value দিয়ে store হয়। Reference type (object, array) memory reference দিয়ে store হয়, তাই copy করলে reference share হয়।
+
+```js
+let x = 5;
+let y = x;
+y = 10; // x = 5
+let arr = [1];
+let arr2 = arr;
+arr2.push(2); // arr = [1,2]
+```
 
 ## 🗂️ Objects, Functions & Prototypes
 
-Q11. Prototypal inheritance কীভাবে কাজ করে?
-A11. Object তার prototype chain থেকে property/method পায়।
+**Q11. Prototypal inheritance কীভাবে কাজ করে?**  
+👉 JavaScript এ object তার prototype chain থেকে property আর method access করে। এটি OOP এর inheritance এর মত কাজ করে।
 
-Q12. Function declaration vs expression পার্থক্য কী?
-A12. Declaration hoisted হয়, expression হয় না।
+```js
+const parent = {
+  greet() {
+    return "hi";
+  },
+};
+const child = Object.create(parent);
+console.log(child.greet()); // "hi"
+```
 
-Q13. Arrow function vs regular function পার্থক্য কী?
-A13. Arrow-এর নিজস্ব this বা arguments নেই।
+**Q12. Function declaration vs expression পার্থক্য কী?**  
+👉 Function declaration hoisting হয়, তাই আগে লিখলেও পরে ব্যবহার করা যায়। Function expression variable এর মতো behave করে, তাই আগে call করলে error হবে।
 
-Q14. this keyword কী বোঝায়?
-A14. Function যেই object execute করছে সেটাকে বোঝায়।
+```js
+foo(); // works
+function foo() {}
 
-Q15. bind(), call(), apply() এর পার্থক্য কী?
-A15. তিনটাই this সেট করে; call/apply সাথে সাথে invoke করে (apply array নেয়), bind নতুন function return করে।
+bar(); // error
+const bar = function () {};
+```
 
-Q16. IIFE কী?
-A16. Immediately Invoked Function Expression, define হওয়ার সাথে সাথে execute হয়।
+**Q13. Arrow function vs regular function পার্থক্য কী?**  
+👉 Arrow function এর নিজস্ব `this` বা `arguments` থাকে না, outer scope থেকে নেয়। Regular function নিজের `this` context পায়।
 
-Q17. Shallow copy vs Deep copy পার্থক্য কী?
-A17. Shallow reference copy করে; Deep nested object duplicate করে।
+```js
+const obj = {
+  val: 10,
+  reg: function () {
+    return this.val;
+  },
+  arr: () => this.val,
+};
+console.log(obj.reg()); // 10
+console.log(obj.arr()); // undefined
+```
 
-Q18. Array চেক করবেন কিভাবে?
-A18. Array.isArray(obj) দিয়ে।
+**Q14. `this` keyword কী বোঝায়?**  
+👉 `this` সেই object কে refer করে যেটার মাধ্যমে function call হয়েছে। Execution context অনুযায়ী এর মান আলাদা হয়।
 
-Q19. Object.freeze() vs Object.seal() পার্থক্য কী?
-A19. freeze = add/remove/modify কিছুই করা যায় না; seal = add/remove করা যায় না, modify করা যায়।
+```js
+function show() {
+  console.log(this.name);
+}
+const user = { name: "Saief", show };
+user.show(); // "Saief"
+```
 
-Q20. Event delegation কী?
-A20. Parent element-এ একটাই listener attach করে child event handle করা।
+**Q15. `bind()`, `call()`, `apply()` এর পার্থক্য কী?**  
+👉 তিনটাই `this` context সেট করে। `call` এবং `apply` function সাথে সাথে invoke করে, শুধু `apply` arguments array নেয়। `bind` নতুন function return করে যা পরে call করা যায়।
+
+```js
+function greet(msg) {
+  console.log(msg, this.name);
+}
+const user = { name: "Saief" };
+greet.call(user, "Hi"); // Hi Saief
+greet.apply(user, ["Yo"]); // Yo Saief
+const fn = greet.bind(user, "Hello");
+fn(); // Hello Saief
+```
+
+**Q16. IIFE কী?**  
+👉 IIFE মানে Immediately Invoked Function Expression। Function define হওয়ার সাথে সাথে execute হয়, যাতে আলাদা scope তৈরি হয়।
+
+```js
+(function () {
+  console.log("IIFE run");
+})();
+```
+
+**Q17. Shallow copy vs Deep copy পার্থক্য কী?**  
+👉 Shallow copy শুধু প্রথম লেভেলের reference copy করে। Deep copy পুরো nested object কে duplicate করে যাতে মূল object পরিবর্তন হলেও copy তে প্রভাব না পড়ে।
+
+```js
+let obj = { a: 1, b: { c: 2 } };
+let shallow = { ...obj };
+shallow.b.c = 99;
+console.log(obj.b.c); // 99 (shallow effect)
+```
+
+**Q18. Array চেক করবেন কিভাবে?**  
+👉 `Array.isArray(obj)` দিয়ে check করা যায়। অন্য method যেমন `instanceof Array` ব্যবহার করলে কিছু ক্ষেত্রে সঠিক নাও হতে পারে।
+
+```js
+Array.isArray([1, 2]); // true
+Array.isArray("hi"); // false
+```
+
+**Q19. `Object.freeze()` vs `Object.seal()` পার্থক্য কী?**  
+👉 `Object.freeze()` করলে object এর property add, remove, modify কিছুই করা যায় না। `Object.seal()` এ add/remove করা যায় না কিন্তু modify করা যায়।
+
+```js
+const obj = { a: 1 };
+Object.freeze(obj);
+obj.a = 2; // no effect
+```
+
+**Q20. Event delegation কী?**  
+👉 Event delegation হলো parent element-এ একটি event listener বসানো, যা bubbling এর মাধ্যমে child elements এর event handle করে। এটি performance বাড়ায়।
+
+```js
+document.getElementById("list").addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") console.log(e.target.textContent);
+});
+```
 
 ## 🚀 Asynchronous JavaScript
 
-Q21. Promise কী?
-A21. Async operation-এর eventual result represent করে।
+**Q21. Promise কী?**  
+👉 Promise হলো async operation এর eventual result represent করার object। এর তিনটি state থাকে: pending, resolved, rejected।
 
-Q22. async/await কী?
-A22. Promise-এর উপর syntactic sugar, readable async code লেখার জন্য।
+```js
+const p = new Promise((res, rej) => res("done"));
+p.then(console.log); // "done"
+```
 
-Q23. Event loop কীভাবে কাজ করে?
-A23. Call stack আর callback queue manage করে async task execute করে।
+**Q22. async/await কী?**  
+👉 async/await হলো promise এর syntactic sugar, যা asynchronous code কে synchronous এর মতো readable করে।
 
-Q24. Microtask vs Macrotask পার্থক্য কী?
-A24. Microtask (Promise, MutationObserver) আগে চলে; Macrotask (setTimeout) পরে।
+```js
+async function getData() {
+  const res = await fetch("/api");
+  return res.json();
+}
+```
 
-Q25. setTimeout vs setImmediate পার্থক্য কী?
-A25. setTimeout delay পরে চলে; setImmediate current phase শেষে চলে (Node.js)।
+**Q23. Event loop কীভাবে কাজ করে?**  
+👉 Event loop call stack আর callback queue manage করে। যখন stack খালি হয়, তখন queue থেকে async callback execute হয়।
 
-Q26. Promise.all() vs Promise.race() পার্থক্য কী?
-A26. all সব resolve/reject হওয়া পর্যন্ত wait করে; race প্রথম settle হওয়া promise return করে।
+```js
+console.log("1");
+setTimeout(() => console.log("2"), 0);
+console.log("3"); // Output: 1,3,2
+```
 
-Q27. Callback hell কী?
-A27. Nested callback structure → unreadable code; solution = Promise/async-await।
+**Q24. Microtask vs Macrotask পার্থক্য কী?**  
+👉 Microtask (Promise, MutationObserver) সবসময় আগে execute হয়। Macrotask যেমন setTimeout event loop এর পরের cycle এ চলে।
 
-Q28. Concurrency vs Parallelism পার্থক্য কী?
-A28. Concurrency = একসাথে multiple কাজ progress করে; Parallelism = একসাথে execute হয়।
+```js
+Promise.resolve().then(() => console.log("micro"));
+setTimeout(() => console.log("macro"), 0);
+// Output: micro, macro
+```
 
-Q29. Fetch request cancel করবেন কিভাবে?
-A29. AbortController ব্যবহার করে।
+**Q25. `setTimeout` vs `setImmediate` পার্থক্য কী?**  
+👉 `setTimeout` নির্দিষ্ট delay পরে চলে। `setImmediate` current phase শেষ হলে চলে, তবে এটা Node.js specific।
 
-Q30. Debounce vs Throttle পার্থক্য কী?
-A30. Debounce = inactivity শেষে execute; Throttle = fixed interval-এ execute।
+**Q26. `Promise.all()` vs `Promise.race()` পার্থক্য কী?**  
+👉 `Promise.all()` সব promise resolve/reject না হওয়া পর্যন্ত wait করে। `Promise.race()` প্রথম যেটা settle হয় সেটা return করে।
+
+```js
+Promise.all([p1, p2]).then(console.log);
+Promise.race([p1, p2]).then(console.log);
+```
+
+**Q27. Callback hell কী?**  
+👉 যখন অনেক nested callback ব্যবহার হয় তখন code unreadable হয়। এর সমাধান হলো Promise বা async/await।
+
+```js
+// Callback hell
+doA(() => doB(() => doC(() => console.log("done"))));
+```
+
+**Q28. Concurrency vs Parallelism পার্থক্য কী?**  
+👉 Concurrency মানে একসাথে multiple কাজ progress করে, কিন্তু একসাথে execute না-ও হতে পারে। Parallelism মানে কাজগুলো একসাথে execute হয়।
+
+**Q29. Fetch request cancel করবেন কিভাবে?**  
+👉 `AbortController` ব্যবহার করে request cancel করা যায়। এটি long running বা অপ্রয়োজনীয় request এ কাজে লাগে।
+
+```js
+const controller = new AbortController();
+fetch("/api", { signal: controller.signal });
+controller.abort();
+```
+
+**Q30. Debounce vs Throttle পার্থক্য কী?**  
+👉 Debounce মানে event trigger বারবার হলে শেষে একবার execute হবে। Throttle মানে নির্দিষ্ট interval এ event limit করা হয়।
+
+```js
+function debounce(fn, delay) {
+  let t;
+  return (...a) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn(...a), delay);
+  };
+}
+```
 
 ## 🌍 ES6+ Features
 
-Q31. Default parameter কী?
-A31. Function parameter-এর default value।
+**Q31. Default parameter কী?**  
+👉 Function parameter এ default value assign করা যায়, যদি কোনো argument না দেওয়া হয়।
 
-Q32. Rest vs Spread operator পার্থক্য কী?
-A32. Rest argument collect করে array বানায়; Spread array/object expand করে।
+```js
+function greet(name = "Guest") {
+  console.log("Hello", name);
+}
+greet(); // Hello Guest
+```
 
-Q33. Module কী?
-A33. ES6 import/export দিয়ে modular code।
+**Q32. Rest vs Spread operator পার্থক্য কী?**  
+👉 Rest operator function এর arguments কে array এ collect করে। Spread operator array/object কে expand করে অন্য array/object এ ব্যবহার করে।
 
-Q34. Generator কী?
-A34. Function যেটা pause/resume হয় yield দিয়ে।
+```js
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0);
+}
+console.log(sum(1, 2, 3)); // 6
 
-Q35. Symbol কী?
-A35. Unique, immutable primitive, mostly object key হিসেবে।
+const arr = [1, 2];
+const arr2 = [...arr, 3];
+```
 
-Q36. Destructuring কী?
-A36. Array/object থেকে value আলাদা variable-এ নেওয়া।
+**Q33. Module কী?**  
+👉 Module মানে code কে আলাদা file এ ভাগ করে ES6 `import`/`export` এর মাধ্যমে reusable করা।
 
-Q37. WeakMap vs WeakSet পার্থক্য কী?
-A37. Weak reference রাখে, garbage collection-friendly।
+```js
+// math.js
+export const add = (a, b) => a + b;
+// main.js
+import { add } from "./math.js";
+```
 
-Q38. Optional chaining কী?
-A38. ?. দিয়ে nested property safely access করা যায়।
+**Q34. Generator কী?**  
+👉 Generator হলো function যেটা pause এবং resume হতে পারে `yield` দিয়ে, যা asynchronous flow manage করতে সহায়ক।
 
-Q39. Nullish coalescing কী?
-A39. ?? শুধু null/undefined হলে fallback দেয়।
+```js
+function* gen() {
+  yield 1;
+  yield 2;
+}
+const g = gen();
+console.log(g.next().value); // 1
+```
 
-Q40. Tagged template literal কী?
-A40. Template literal custom function দিয়ে process করা।
+**Q35. Symbol কী?**  
+👉 Symbol হলো unique আর immutable primitive value, যা সাধারণত object এর unique property key হিসেবে ব্যবহার করা হয়।
+
+```js
+const id = Symbol("id");
+const user = { [id]: 123 };
+```
+
+**Q36. Destructuring কী?**  
+👉 Destructuring দিয়ে array/object থেকে মান সহজে আলাদা variable এ assign করা যায়।
+
+```js
+const [a, b] = [1, 2];
+const { name, age } = { name: "Saief", age: 28 };
+```
+
+**Q37. WeakMap vs WeakSet পার্থক্য কী?**  
+👉 WeakMap এবং WeakSet এ object এর weak reference থাকে, garbage collection এ automatically remove হয়ে যায়।
+
+**Q38. Optional chaining কী?**  
+👉 Optional chaining (`?.`) দিয়ে nested property access করা যায় safely, error ছাড়াই।
+
+```js
+const user = { profile: { name: "Saief" } };
+console.log(user.profile?.name); // Saief
+```
+
+**Q39. Nullish coalescing কী?**  
+👉 `??` operator null বা undefined হলে fallback value দেয়, কিন্তু false বা 0 হলে দেয় না।
+
+```js
+let x = null;
+console.log(x ?? "default"); // default
+```
+
+**Q40. Tagged template literal কী?**  
+👉 Tagged template literal হলো function যেটা template literal কে custom process করে।
 
 ## ⚖️ Advanced Concepts & Performance
 
-Q41. Currying কী?
-A41. Multi-arg function → nested single-arg function।
+**Q41. Currying কী?**  
+👉 Currying হলো multi-arg function কে ভেঙে nested single-arg function এ রূপান্তর করা। এটি functional programming এ use হয়।
 
-Q42. Memoization কী?
-A42. Function result cache করে performance বাড়ানো।
+```js
+const add = (a) => (b) => a + b;
+const add5 = add(5);
+console.log(add5(3)); // 8
+```
 
-Q43. Tail call optimization কী?
-A43. Recursive call stack reuse করে memory save করা।
+**Q42. Memoization কী?**  
+👉 Memoization হলো expensive function‑এর ফল cache করে রাখা, ফলে একই input‑এ দ্রুত ন্যূনতম কম্পিউটেশন হয়।
 
-Q44. Service worker কী?
-A44. Background script → caching, offline, push notification।
+```js
+const memoize = (fn) => {
+  const cache = new Map();
+  return (arg) => (cache.has(arg) ? cache.get(arg) : cache.set(arg, fn(arg)) && cache.get(arg));
+};
+const slow = (n) => {
+  /* heavy calc */
+  return n * n;
+};
+const fast = memoize(slow);
+```
 
-Q45. localStorage vs sessionStorage vs cookies পার্থক্য কী?
-A45. localStorage স্থায়ী, sessionStorage tab-close এ clear হয়, cookies request-এর সাথে যায়।
+**Q43. Tail call optimization কী?**  
+👉 TCO হলে recursive ফাংশনের শেষ কাজটাই recursive কল, তখন কল‑স্ট্যাক reuse করে stack overflow আটকায়; সব JS engines এটি সমর্থন করে না, তবে ভাল recursive pattern লিখতে সাহায্য করে।
 
-Q46. `==` vs `Object.is()` পার্থক্য কী?
-A46. `Object.is` `===` এর মতো, কিন্তু `NaN` আর -`0` ঠিকভাবে handle করে।
+```js
+function fact(n, acc = 1) {
+  if (n === 0) return acc;
+  return fact(n - 1, acc * n); // tail position
+}
+```
 
-Q47. Garbage collection কীভাবে কাজ করে?
-A47. Reachability check করে unreferenced object remove করে।
+**Q44. Service worker কী?**  
+👉 Service Worker background‑এ assets/requests cache করে, offline বা slow network‑এ দ্রুত response দেয় এবং background sync বা push notification চালায়।
 
-Q48. Event bubbling vs capturing পার্থক্য কী?
-A48. Bubbling = child → parent, Capturing = parent → child।
+```js
+// register in main script
+navigator.serviceWorker.register("/sw.js");
+```
 
-Q49. `map()`, `forEach()`, `filter()`, `reduce()` পার্থক্য কী?
-A49. map transform করে, forEach iterate করে, filter select করে, reduce accumulate করে।
+**Q45. `localStorage` vs `sessionStorage` vs `cookies` পার্থক্য কী?**  
+👉 localStorage data browser এ থাকে যতক্ষণ clear না করা হয়। sessionStorage tab close হলে clear হয়। cookies request এর সাথে server এ পাঠানো হয়।
 
-Q50. Pure function কী?
-A50. Side-effect ছাড়া, same input → same output দেয়।
+```js
+localStorage.setItem("theme", "dark"); // persists
+sessionStorage.setItem("temp", "1"); // clears on tab close
+```
+
+**Q46. `==` vs `Object.is()` পার্থক্য কী?**  
+👉 `Object.is()` প্রায় `===` এর মতো, তবে `NaN` আর `-0` case গুলো সঠিকভাবে handle করে।
+
+```js
+NaN === NaN; // false
+Object.is(NaN, NaN); // true
+Object.is(0, -0); // false
+```
+
+**Q47. Garbage collection কীভাবে কাজ করে?**  
+👉 GC সাধারণত reachability দেখে: কোনো object যদি program থেকে reference না থাকে, সেটাকে রিমুভ করে। ঠিক কবে ও কীভাবে হয় engine নির্ভর।
+
+```js
+const obj = { a: 1 };
+obj = null; // garbage collected
+```
+
+**Q48. Event bubbling vs capturing পার্থক্য কী?**  
+👉 Capturing: parent → child, Bubbling: child → parent. ডিফল্ট হলো bubbling; কোনও ক্ষেত্রে parent এ centralized handler রাখতে গেলে bubbling কাজে লাগে।
+
+```js
+// capture phase
+elem.addEventListener("click", handler, true);
+// bubble phase
+elem.addEventListener("click", handler, false);
+```
+
+**Q49. `map()`, `forEach()`, `filter()`, `reduce()` পার্থক্য কী?**
+
+👉 `map()` array transform করে, `filter()` subset বেছে নেয়, `reduce()` value aggregate করে। এগুলো একসাথে ব্যবহার করে readable data pipelines বানান।
+
+```js
+const nums = [1, 2, 3, 4];
+const evens = nums.filter((n) => n % 2 === 0); // [2,4]
+const doubled = nums.map((n) => n * 2); // [2,4,6,8]
+const sum = nums.reduce((s, n) => s + n, 0); // 10
+```
+
+**Q50. Pure function কী?**  
+👉 Pure function একই input দিলে সবসময় একই output দেয় এবং কোনো external state পরিবর্তন করে না; testable, cacheable, predictable code‑base তৈরিতে সহায়ক।
+
+```js
+// pure
+const add = (a, b) => a + b;
+// impure (mutates external state)
+let total = 0;
+function addToTotal(x) {
+  total += x;
+}
+```
 
 ---
 

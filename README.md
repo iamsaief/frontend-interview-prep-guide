@@ -1,6 +1,6 @@
 <div align="center">
-    <img height="60" src="https://img.icons8.com/color/344/javascript.png" />
-    <img height="55" src="https://svgmix.com/uploads/e86a0a-react.svg" />
+    <img height="40" src="https://svgmix.com/uploads/d64401-javascript.svg" />
+    <img height="40" src="https://svgmix.com/uploads/e86a0a-react.svg" />
   <h1>🚀 The Ultimate Frontend Interview Prep Guide</h1>
 </div>
 
@@ -45,14 +45,14 @@ Available In: [🇧🇩 বাংলা](./bn-BD/README_bn-BD.md)
 
 ## 🏗️ Core Concepts & Language Fundamentals
 
-Q1. What are the differences between var, let, and const?
-A1. var is function-scoped and hoisted, let and const are block-scoped; const cannot be reassigned.
+Q1. What are the differences between `var`, `let`, and `const`?
+A1. `var` is function-scoped and hoisted, `let` and `const` are block-scoped; `const` cannot be reassigned.
 
 Q2. Explain hoisting in JavaScript.
 A2. Variable and function declarations are moved to the top of their scope during compilation.
 
-Q3. What is the difference between == and ===?
-A3. == does type coercion, === checks both value and type strictly.
+Q3. What is the difference between `==` and `===`?
+A3. `==` does type coercion, `===` checks both value and type strictly.
 
 Q4. What are closures and why are they useful?
 A4. A closure is a function that remembers variables from its outer scope; useful for encapsulation and state.
@@ -66,8 +66,8 @@ A6. Synchronous executes line by line; asynchronous allows non-blocking operatio
 Q7. What are higher-order functions?
 A7. Functions that take other functions as arguments or return them.
 
-Q8. What is the difference between null and undefined?
-A8. undefined means a variable is declared but not assigned; null is an intentional empty value.
+Q8. What is the difference between `null` and `undefined`?
+A8. `undefined` means a variable is declared but not assigned; `null` is an intentional empty value.
 
 Q9. What are template literals?
 A9. String literals with backticks that support interpolation and multiline strings.
@@ -84,13 +84,13 @@ Q12. What is the difference between function declaration and function expression
 A12. Declarations are hoisted; expressions are not.
 
 Q13. What is the difference between arrow functions and regular functions?
-A13. Arrow functions don’t have their own this or arguments.
+A13. Arrow functions don’t have their own `this` or arguments.
 
-Q14. What is the purpose of the this keyword?
+Q14. What is the purpose of the `this` keyword?
 A14. Refers to the object that is executing the current function.
 
-Q15. How does bind(), call(), and apply() differ?
-A15. All set this; call and apply invoke immediately (apply takes array args), bind returns a new function.
+Q15. How does `bind()`, `call()`, and `apply()` differ?
+A15. All set `this`; `call` and `apply` invoke immediately (`apply` takes array args), `bind` returns a new function.
 
 Q16. What are IIFEs (Immediately Invoked Function Expressions)?
 A16. Functions executed immediately after definition, often for scoping.
@@ -99,10 +99,10 @@ Q17. What is the difference between shallow copy and deep copy?
 A17. Shallow copy copies references; deep copy duplicates nested objects.
 
 Q18. How do you check if an object is an array?
-A18. Use Array.isArray(obj).
+A18. Use `Array.isArray(obj)`.
 
-Q19. What is the difference between Object.freeze() and Object.seal()?
-A19. freeze prevents adding/removing/modifying; seal prevents adding/removing but allows modifying existing.
+Q19. What is the difference between `Object.freeze()` and `Object.seal()`?
+A19. `freeze` prevents adding/removing/modifying; `seal` prevents adding/removing but allows modifying existing.
 
 Q20. What is event delegation?
 A20. Attaching a single event listener to a parent to handle events on child elements.
