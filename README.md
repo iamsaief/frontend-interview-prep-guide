@@ -12,7 +12,7 @@ React ও JavaScript ইন্টারভিউ প্রস্তুতির 
 
 <p align="center">
 💬 In case you want to reach out or just say hi, ↩️ <br/>
-<a href="https://www.facebook.com/saiefalemon">Facebook</a> | <a href="https://www.linkedin.com/in/saiefalemon">LinkedIn</a> | <a href="https://www.iamsaief.github.io.com/">Portfolio</a>
+<a href="https://www.facebook.com/saiefalemon">Facebook</a> | <a href="https://www.linkedin.com/in/saiefalemon">LinkedIn</a> | <a href="https://iamsaief.github.io/">Portfolio</a>
 </p>
 
 ---
