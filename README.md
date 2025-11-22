@@ -1,6 +1,6 @@
 <div align="center">
-    <img height="40" src="https://svgmix.com/uploads/d64401-javascript.svg" />
-    <img height="40" src="https://svgmix.com/uploads/e86a0a-react.svg" />
+    <img height="40" src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" />&nbsp;
+    <img height="40" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" />
     <h1>🚀 The Ultimate Frontend Interview Prep Guide</h1>
 </div>
 
